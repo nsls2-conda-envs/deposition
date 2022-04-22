@@ -1,0 +1,22 @@
+name: package_download
+
+on:
+  push:
+  # pull_request:
+
+jobs:
+  download_with_wget:
+    name: download with wget
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download archive with wget (--progress=bar:force:noscroll)
+        shell: bash -l {0}
+        run: |
+          wget --progress=bar:force:noscroll "https://zenodo.org/record/5802039/files/nsls2-collection-2021-3.1-py37.tar.gz?download=1" -O progress-bar.tar.gz
+    
+      - name: Download archive with wget (--progress=bar:force:noscroll)
+        shell: bash -l {0}
+        run: |
+          wget --show-progress "https://zenodo.org/record/5802039/files/nsls2-collection-2021-3.1-py37.tar.gz?download=1" -O progress-bar.tar.gz
+
