@@ -91,7 +91,7 @@ if __name__ == "__main__":
     counter = count(1)
     token = os.environ["ZENODO_SANDBOX_TOKEN"]
     resp = create_new_version(
-        conceptrecid="1054873", version="v0.0.4a9", token=token,
-        extra_files={"2022-2.0-py39-tiled.tar.gz": "rb"}
+        conceptrecid="1054873", version="v0.0.4a10", token=token,
+        extra_files={"2022-2.2-py39-tiled.tar.gz": "rb"}
     )
     pprint.pprint(resp)

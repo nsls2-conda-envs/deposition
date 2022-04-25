@@ -36,7 +36,9 @@ jobs:
 
       - name: download artifact
         run: |
-          wget --progress=dot:giga "https://zenodo.org/record/6462525/files/2022-2.0-py39-tiled.tar.gz?download=1" -O "2022-2.0-py39-tiled.tar.gz"
+          set -vxeuo pipefail
+          wget --progress=dot:giga "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" -O "2022-2.0-py39-tiled.zip"
+          unzip 2022-2.0-py39-tiled.zip
 
       - name: Test upload to Zenodo Sandbox
         run: |
