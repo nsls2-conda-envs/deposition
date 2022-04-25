@@ -21,7 +21,7 @@ def create_new_version(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{rec.json()['id']}/actions/newversion",
         params={"access_token": token},
     )
-    print(ret_newver.status_code, ret_newver.json())
+    print(ret_newver.url, ret_newver.status_code, ret_newver.json())
 
     newver_draft = ret_newver.json()["links"]["latest_draft"]
 
@@ -52,7 +52,7 @@ def create_new_version(
         headers={"Content-Type": "application/json"},
         data=json.dumps(data),
     )
-    print(resp_update.status_code, resp_update.text)
+    print(newver_draft, resp_update.status_code, resp_update.text)
 
     for file in resp_update.json()["files"]:
         self_file = file["links"]["self"]
