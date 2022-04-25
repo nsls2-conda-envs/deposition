@@ -6,11 +6,13 @@ on:
 
 jobs:
   test_zenodo_upload:
-    name: download with wget
+    name: test zenodo upload
     runs-on: ubuntu-latest
     defaults:
       run:
         shell: bash -l {0}
+    env:
+      TZ: America/New_York
 
     steps:
       - name: Set env vars
