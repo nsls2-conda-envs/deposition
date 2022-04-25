@@ -21,6 +21,7 @@ def create_new_version(
         f"https://sandbox.zenodo.org/api/deposit/depositions/{rec.json()['id']}/actions/newversion",
         params={"access_token": token},
     )
+    print(ret_newver.status_code, ret_newver.json())
 
     newver_draft = ret_newver.json()["links"]["latest_draft"]
 
