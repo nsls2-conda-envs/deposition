@@ -40,8 +40,8 @@ jobs:
       - name: download artifact
         run: |
           set -vxeuo pipefail
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" > "2022-2.0-py39-tiled.zip"
-          unzip 2022-2.0-py39-tiled.zip
+          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" > "2022-2.2-py39-tiled.zip"
+          unzip 2022-2.2-py39-tiled.zip
 
       - name: Test upload to Zenodo Sandbox
         run: |
