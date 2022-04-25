@@ -5,11 +5,19 @@ on:
   # pull_request:
 
 jobs:
-  download_with_wget:
+  test_zenodo_upload:
     name: download with wget
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash -l {0}
 
     steps:
+      - name: Set env vars
+        run: |
+          export ZENODO_SANDBOX_TOKEN=${{ secrets.ZENODO_SANDBOX_TOKEN }}
+          echo "ZENODO_SANDBOX_TOKEN=${ZENODO_SANDBOX_TOKEN}" >> $GITHUB_ENV
+
       - name: checkout the code
         uses: actions/checkout@v2
 
@@ -21,11 +29,9 @@ jobs:
           python-version: 3.9
 
       - name: pip-install dependencies
-        shell: bash -l {0}
         run: |
           python3 -m pip install requests
 
       - name: Test upload to Zenodo Sandbox
-        shell: bash -l {0}
         run: |
           python3 test-upload.py
