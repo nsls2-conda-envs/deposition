@@ -20,6 +20,9 @@ jobs:
           export ZENODO_SANDBOX_TOKEN=${{ secrets.ZENODO_SANDBOX_TOKEN }}
           echo "ZENODO_SANDBOX_TOKEN=${ZENODO_SANDBOX_TOKEN}" >> $GITHUB_ENV
 
+          export GHA_TOKEN=${{ secrets.GHA_TOKEN }}
+          echo "GHA_TOKEN=${GHA_TOKEN}" >> $GITHUB_ENV
+
       - name: checkout the code
         uses: actions/checkout@v2
 
@@ -38,6 +41,7 @@ jobs:
         run: |
           set -vxeuo pipefail
           wget --progress=dot:giga "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" -O "2022-2.0-py39-tiled.zip"
+          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" > "2022-2.0-py39-tiled.zip"
           unzip 2022-2.0-py39-tiled.zip
 
       - name: Test upload to Zenodo Sandbox
