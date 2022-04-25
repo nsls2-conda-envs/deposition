@@ -40,7 +40,6 @@ jobs:
       - name: download artifact
         run: |
           set -vxeuo pipefail
-          wget --progress=dot:giga "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" -O "2022-2.0-py39-tiled.zip"
           curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" > "2022-2.0-py39-tiled.zip"
           unzip 2022-2.0-py39-tiled.zip
 
