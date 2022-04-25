@@ -15,7 +15,7 @@ def create_new_version(
     conceptrecid=None, version=None, extra_files=None, token=None
 ):
     rec = requests.get(
-        f"{BASE_URL}/api/records/{conceptrecid}",
+        f"{BASE_URL}/records/{conceptrecid}",
         headers={"Authorization": f"Bearer {token}"},
     )
 
