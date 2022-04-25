@@ -8,17 +8,19 @@ from itertools import count
 
 import requests
 
+# BASE_URL = "https://sandbox.zenodo.org/api"
+BASE_URL = "https://zenodo.org/api"
 
 def create_new_version(
     conceptrecid=None, version=None, extra_files=None, token=None
 ):
     rec = requests.get(
-        f"https://sandbox.zenodo.org/api/records/{conceptrecid}",
+        f"{BASE_URL}/api/records/{conceptrecid}",
         headers={"Authorization": f"Bearer {token}"},
     )
 
     ret_newver = requests.post(
-        f"https://sandbox.zenodo.org/api/deposit/depositions/{rec.json()['id']}/actions/newversion",
+        f"{BASE_URL}/deposit/depositions/{rec.json()['id']}/actions/newversion",
         params={"access_token": token},
     )
     print(ret_newver.url, ret_newver.status_code, ret_newver.json())
@@ -28,13 +30,10 @@ def create_new_version(
     data = {
         "metadata": {
             "version": version,
-            "title": f"mrakitin's test on {ttime.ctime()}",
-            "description": "my test",
+            "title": f"NSLS-II collection conda environment 2022-2.2 with Python 3.8 and 3.9",
+            "description": "NSLS-II collection environment deployed to the experimental floor.",
             "upload_type": "software",
-            "publication_date": (
-                datetime.datetime.now()
-                + datetime.timedelta(days=next(counter))
-            ).strftime("%Y-%m-%d"),
+            "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
             "prereserve_doi": True,
             "creators": [
                 {
@@ -59,12 +58,7 @@ def create_new_version(
         r = requests.delete(self_file, params={"access_token": token})
         print(r.status_code, r.text)
 
-    with open(f"{version}.txt", "w") as f:
-        f.write(f"{version}")
-
-    subprocess.run(f"tar -czvf {version}.tar.gz {version}.txt".split())
-    ttime.sleep(1.0)
-    all_files = {f"{version}.tar.gz": "rb", f"{version}.txt": "r"}
+    all_files = {}
     if extra_files is not None:
         all_files.update(**extra_files)
     bucket_url = resp_update.json()["links"]["bucket"]
@@ -80,18 +74,23 @@ def create_new_version(
         )
         print(ret.status_code, ret.text)
 
-    ret = requests.post(
-        resp_update.json()["links"]["publish"], params={"access_token": token}
-    )
-    print(ret.status_code, ret.text)
-    return ret.json()
+    # ret = requests.post(
+    #     resp_update.json()["links"]["publish"], params={"access_token": token}
+    # )
+    # print(ret.status_code, ret.text)
+    # return ret.json()
 
 
 if __name__ == "__main__":
     counter = count(1)
-    token = os.environ["ZENODO_SANDBOX_TOKEN"]
+    token = os.environ["ZENODO_TOKEN"]
     resp = create_new_version(
-        conceptrecid="1054873", version="v0.0.4a11", token=token,
-        extra_files={"2022-2.2-py39-tiled.tar.gz": "rb"}
+        conceptrecid="4057062", version="2022-2.2", token=token,
+        extra_files={
+            "2022-2.2-py39-tiled-md5sum.txt": "r",
+            "2022-2.2-py39-tiled-sha256sum.txt": "r",
+            "2022-2.2-py39-tiled.tar.gz": "rb",
+            "2022-2.2-py39-tiled.yml": "r",
+        }
     )
     pprint.pprint(resp)
