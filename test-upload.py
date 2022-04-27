@@ -11,6 +11,11 @@ import requests
 # BASE_URL = "https://sandbox.zenodo.org/api"
 BASE_URL = "https://zenodo.org/api"
 
+
+def print_now(*args):
+    print(*args, file=sys.stdout, flush=True)
+
+
 def create_new_version(
     conceptrecid=None, version=None, extra_files=None, token=None
 ):
@@ -23,7 +28,7 @@ def create_new_version(
         f"{BASE_URL}/deposit/depositions/{rec.json()['id']}/actions/newversion",
         params={"access_token": token},
     )
-    print(ret_newver.url, ret_newver.status_code, ret_newver.json())
+    print_now(ret_newver.url, ret_newver.status_code, ret_newver.json())
 
     newver_draft = ret_newver.json()["links"]["latest_draft"]
 
@@ -51,18 +56,19 @@ def create_new_version(
         headers={"Content-Type": "application/json"},
         data=json.dumps(data),
     )
-    print(newver_draft, resp_update.status_code, resp_update.text)
+    print_now(newver_draft, resp_update.status_code, resp_update.text)
 
     for file in resp_update.json()["files"]:
         self_file = file["links"]["self"]
         r = requests.delete(self_file, params={"access_token": token})
-        print(r.status_code, r.text)
+        print_now(r.status_code, r.text)
 
     all_files = {}
     if extra_files is not None:
         all_files.update(**extra_files)
     bucket_url = resp_update.json()["links"]["bucket"]
     for file, mode in all_files.items():
+        print_now(f"Uploading {file}...")
         ret = requests.put(
             f"{bucket_url}/{os.path.basename(file)}",
             params={"access_token": token},
@@ -72,12 +78,12 @@ def create_new_version(
             },
             data=open(file, mode),
         )
-        print(ret.status_code, ret.text)
+        print_now(ret.status_code, ret.text)
 
     # ret = requests.post(
     #     resp_update.json()["links"]["publish"], params={"access_token": token}
     # )
-    # print(ret.status_code, ret.text)
+    # print_now(ret.status_code, ret.text)
     # return ret.json()
 
 

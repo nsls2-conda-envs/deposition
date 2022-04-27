@@ -37,7 +37,7 @@ jobs:
         run: |
           python3 -m pip install requests
 
-      - name: download artifact
+      - name: download artifacts
         run: |
           set -vxeuo pipefail
 
