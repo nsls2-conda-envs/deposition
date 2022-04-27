@@ -19,8 +19,10 @@ def print_now(*args):
 
 def upload_files(bucket_url, files, token):
     if files is None:
-        raise ValueError("Files cannot be None, specify a dict with file names "
-                         "as keys and access mode as values")
+        raise ValueError(
+            "Files cannot be None, specify a dict with file names "
+            "as keys and access mode as values"
+        )
 
     for file, mode in files.items():
         print_now(f"Uploading {file}...")
@@ -113,7 +115,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
         headers=headers,
     )
 
-    latest_draft_url = rec3.json()["links"]["latest_draft"]
+    latest_draft_url = deposition.json()["links"]["latest_draft"]
     latest_draft = requests.get(
         latest_draft_url,
         headers=headers,
@@ -152,7 +154,7 @@ if __name__ == "__main__":
     # )
     # pprint.pprint(resp)
 
-    files={
+    files = {
         # Python 3.8
         "2022-2.2-py38-md5sum.txt": "r",
         "2022-2.2-py38-sha256sum.txt": "r",
@@ -168,3 +170,7 @@ if __name__ == "__main__":
         "runner-2022-2.2-py39.sh": "r",
         "2022-2.2-py39.tar.gz": "rb",
     }
+
+    update_deposition_with_files(
+        conceptrecid=conceptrecid, files=files, token=token
+    )
