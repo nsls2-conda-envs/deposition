@@ -40,8 +40,26 @@ jobs:
       - name: download artifact
         run: |
           set -vxeuo pipefail
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/219153297/zip" > "archive.zip"
-          unzip archive.zip
+
+          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/2202665942.
+
+          artifact_id="219153295"
+          envname="2022-2.2-py38-tiled"
+          archive_name="${envname}.zip"
+          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/${artifact_id}/zip" > ${archive_name}
+          unzip -v ${archive_name}  # contents info
+          unzip ${archive_name}
+          mv -v Dockerfile Dockerfile-${envname}
+          rm -fv ${archive_name}
+
+          artifact_id="219153297"
+          envname="2022-2.2-py39-tiled"
+          archive_name="${envname}.zip"
+          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/nsls2-collection-tiled/actions/artifacts/${artifact_id}/zip" > ${archive_name}
+          unzip -v ${archive_name}  # contents info
+          unzip ${archive_name}
+          mv -v Dockerfile Dockerfile-${envname}
+          rm -fv ${archive_name}
 
       - name: Test upload to Zenodo Sandbox
         run: |

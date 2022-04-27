@@ -30,15 +30,15 @@ def create_new_version(
     data = {
         "metadata": {
             "version": version,
-            "title": f"NSLS-II collection conda environment 2022-2.2 with Python 3.8 and 3.9",
+            "title": f"NSLS-II collection conda environment {version} with Python 3.8 and 3.9",
             "description": "NSLS-II collection environment deployed to the experimental floor.",
             "upload_type": "software",
-            "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
+            "publication_date": "2022-04-21",  # datetime.datetime.now().strftime("%Y-%m-%d"),
             "prereserve_doi": True,
             "creators": [
                 {
                     "name": "Rakitin, Maksim",
-                    "affiliation": "NSLS-II, BNL",
+                    "affiliation": "NSLS-II, Brookhaven National Laboratory",
                     "orcid": "0000-0003-3685-852X",
                 }
             ],
@@ -87,10 +87,20 @@ if __name__ == "__main__":
     resp = create_new_version(
         conceptrecid="4057062", version="2022-2.2", token=token,
         extra_files={
+            # Python 3.8
+            "2022-2.2-py38-tiled-md5sum.txt": "r",
+            "2022-2.2-py38-tiled-sha256sum.txt": "r",
+            "2022-2.2-py38-tiled.tar.gz": "rb",
+            "2022-2.2-py38-tiled.yml": "r",
+            "Dockerfile-2022-2.2-py38-tiled": "r",
+            "runner-2022-2.2-py38-tiled": "r",
+            # Python 3.9
             "2022-2.2-py39-tiled-md5sum.txt": "r",
             "2022-2.2-py39-tiled-sha256sum.txt": "r",
             "2022-2.2-py39-tiled.tar.gz": "rb",
             "2022-2.2-py39-tiled.yml": "r",
+            "Dockerfile-2022-2.2-py39-tiled": "r",
+            "runner-2022-2.2-py39-tiled": "r",
         }
     )
     pprint.pprint(resp)
