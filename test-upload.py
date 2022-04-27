@@ -3,6 +3,7 @@ import json
 import os
 import pprint
 import subprocess
+import sys
 import time as ttime
 from itertools import count
 
@@ -91,7 +92,9 @@ if __name__ == "__main__":
     counter = count(1)
     token = os.environ["ZENODO_TOKEN"]
     resp = create_new_version(
-        conceptrecid="4057062", version="2022-2.2", token=token,
+        conceptrecid="4057062",
+        version="2022-2.2",
+        token=token,
         extra_files={
             # Python 3.8
             "2022-2.2-py38-tiled-md5sum.txt": "r",
@@ -107,6 +110,6 @@ if __name__ == "__main__":
             "2022-2.2-py39-tiled.yml": "r",
             "Dockerfile-2022-2.2-py39-tiled": "r",
             "runner-2022-2.2-py39-tiled": "r",
-        }
+        },
     )
     pprint.pprint(resp)
