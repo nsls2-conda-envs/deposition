@@ -99,17 +99,17 @@ if __name__ == "__main__":
             # Python 3.8
             "2022-2.2-py38-tiled-md5sum.txt": "r",
             "2022-2.2-py38-tiled-sha256sum.txt": "r",
-            "2022-2.2-py38-tiled.tar.gz": "rb",
             "2022-2.2-py38-tiled.yml": "r",
             "Dockerfile-2022-2.2-py38-tiled": "r",
-            "runner-2022-2.2-py38-tiled": "r",
+            "runner-2022-2.2-py38-tiled.sh": "r",
+            "2022-2.2-py38-tiled.tar.gz": "rb",
             # Python 3.9
             "2022-2.2-py39-tiled-md5sum.txt": "r",
             "2022-2.2-py39-tiled-sha256sum.txt": "r",
-            "2022-2.2-py39-tiled.tar.gz": "rb",
             "2022-2.2-py39-tiled.yml": "r",
             "Dockerfile-2022-2.2-py39-tiled": "r",
-            "runner-2022-2.2-py39-tiled": "r",
+            "runner-2022-2.2-py39-tiled.sh": "r",
+            "2022-2.2-py39-tiled.tar.gz": "rb",
         },
     )
     pprint.pprint(resp)
