@@ -63,6 +63,17 @@ def create_new_version(
             "upload_type": "software",
             "publication_date": "2022-04-15",  # datetime.datetime.now().strftime("%Y-%m-%d"),
             "prereserve_doi": True,
+            "keywords": [
+                "conda",
+                "NSLS-II",
+                "bluesky",
+                "data acquisition",
+                "conda-forge",
+            ],
+            "notes": (
+                "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/3<br>"
+                "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/2173349832"
+            ),
             "creators": [
                 {
                     "name": "Rakitin, Maksim",
@@ -72,6 +83,7 @@ def create_new_version(
                 {
                     "name": "Bischof, Garrett",
                     "affiliation": "NSLS-II, Brookhaven National Laboratory",
+                    "orcid": "0000-0001-9351-274X",
                 },
             ],
         }
