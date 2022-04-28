@@ -58,10 +58,10 @@ def create_new_version(
     data = {
         "metadata": {
             "version": version,
-            "title": f"NSLS-II collection conda environment {version} with Python 3.7 and 3.9",
+            "title": f"NSLS-II collection conda environment {version} with Python 3.8 and 3.9",
             "description": "NSLS-II collection environment deployed to the experimental floor.",
             "upload_type": "software",
-            "publication_date": "2022-04-15",  # datetime.datetime.now().strftime("%Y-%m-%d"),
+            "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
             "prereserve_doi": True,
             "keywords": [
                 "conda",
@@ -69,10 +69,11 @@ def create_new_version(
                 "bluesky",
                 "data acquisition",
                 "conda-forge",
+                "conda-pack",
             ],
             "notes": (
-                "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/3<br>"
-                "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/2173349832"
+                "https://github.com/nsls2-conda-envs/nsls2-collection/pull/5<br>"
+                "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/2235980315"
             ),
             "creators": [
                 {
@@ -145,7 +146,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2022-2.1"
+    version = "2022-2.3"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
@@ -153,20 +154,35 @@ if __name__ == "__main__":
         version=version,
         token=token,
         extra_files={
-            # Python 3.8
-            f"{version}-py37-tiled-md5sum.txt": "r",
-            f"{version}-py37-tiled-sha256sum.txt": "r",
-            f"{version}-py37-tiled.yml": "r",
-            f"Dockerfile-{version}-py37-tiled": "r",
-            f"runner-{version}-py37-tiled.sh": "r",
-            f"{version}-py37-tiled.tar.gz": "rb",
-            # Python 3.9
-            f"{version}-py39-tiled-md5sum.txt": "r",
-            f"{version}-py39-tiled-sha256sum.txt": "r",
-            f"{version}-py39-tiled.yml": "r",
-            f"Dockerfile-{version}-py39-tiled": "r",
-            f"runner-{version}-py39-tiled.sh": "r",
-            f"{version}-py39-tiled.tar.gz": "rb",
+            # Python 3.8 (non-tiled)
+            f"{version}-py38-md5sum.txt": "r",
+            f"{version}-py38-sha256sum.txt": "r",
+            f"{version}-py38.yml": "r",
+            f"Dockerfile-{version}-py38": "r",
+            f"runner-{version}-py38.sh": "r",
+            f"{version}-py38.tar.gz": "rb",
+            # Python 3.9 (non-tiled)
+            f"{version}-py39-md5sum.txt": "r",
+            f"{version}-py39-sha256sum.txt": "r",
+            f"{version}-py39.yml": "r",
+            f"Dockerfile-{version}-py39": "r",
+            f"runner-{version}-py39.sh": "r",
+            f"{version}-py39.tar.gz": "rb",
+
+            # Python 3.8 (tiled)
+            # f"{version}-py38-tiled-md5sum.txt": "r",
+            # f"{version}-py38-tiled-sha256sum.txt": "r",
+            # f"{version}-py38-tiled.yml": "r",
+            # f"Dockerfile-{version}-py38-tiled": "r",
+            # f"runner-{version}-py38-tiled.sh": "r",
+            # f"{version}-py38-tiled.tar.gz": "rb",
+            # # Python 3.9 (tiled)
+            # f"{version}-py39-tiled-md5sum.txt": "r",
+            # f"{version}-py39-tiled-sha256sum.txt": "r",
+            # f"{version}-py39-tiled.yml": "r",
+            # f"Dockerfile-{version}-py39-tiled": "r",
+            # f"runner-{version}-py39-tiled.sh": "r",
+            # f"{version}-py39-tiled.tar.gz": "rb",
         },
     )
     pprint.pprint(resp)
