@@ -41,49 +41,50 @@ jobs:
         run: |
           set -vxeuo pipefail
 
-          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/2202665942
+          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/2173349832
 
-          # repo_name="nsls2-collection-tiled"
-          # artifact_id="219153295"
-          # envname="2022-2.2-py38-tiled"
-          # archive_name="${envname}.zip"
-          # curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          # unzip -v ${archive_name}  # contents info
-          # unzip ${archive_name}
-          # mv -v Dockerfile Dockerfile-${envname}
-          # rm -fv ${archive_name}
+          repo_name="nsls2-collection-tiled"
+          artifact_id="214090900"
+          envname="2022-2.1-py37-tiled"
+          archive_name="${envname}.zip"
+          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
+          unzip -v ${archive_name}  # contents info
+          unzip ${archive_name}
+          mv -v Dockerfile Dockerfile-${envname}
+          rm -fv ${archive_name}
 
-          # repo_name="nsls2-collection-tiled"
-          # artifact_id="219153297"
-          # envname="2022-2.2-py39-tiled"
-          # archive_name="${envname}.zip"
-          # curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          # unzip -v ${archive_name}  # contents info
-          # unzip ${archive_name}
-          # mv -v Dockerfile Dockerfile-${envname}
-          # rm -fv ${archive_name}
+          repo_name="nsls2-collection-tiled"
+          artifact_id="214090901"
+          envname="2022-2.1-py39-tiled"
+          archive_name="${envname}.zip"
+          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
+          unzip -v ${archive_name}  # contents info
+          unzip ${archive_name}
+          mv -v Dockerfile Dockerfile-${envname}
+          rm -fv ${archive_name}
+
 
           # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/2203177467
 
-          repo_name="nsls2-collection"
-          artifact_id="219242755"
-          envname="2022-2.2-py38"
-          archive_name="${envname}.zip"
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          unzip -v ${archive_name}  # contents info
-          unzip ${archive_name}
-          mv -v Dockerfile Dockerfile-${envname}
-          rm -fv ${archive_name}
+          # repo_name="nsls2-collection"
+          # artifact_id="219242755"
+          # envname="2022-2.2-py38"
+          # archive_name="${envname}.zip"
+          # curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
+          # unzip -v ${archive_name}  # contents info
+          # unzip ${archive_name}
+          # mv -v Dockerfile Dockerfile-${envname}
+          # rm -fv ${archive_name}
 
-          repo_name="nsls2-collection"
-          artifact_id="219242758"
-          envname="2022-2.2-py39"
-          archive_name="${envname}.zip"
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          unzip -v ${archive_name}  # contents info
-          unzip ${archive_name}
-          mv -v Dockerfile Dockerfile-${envname}
-          rm -fv ${archive_name}
+          # repo_name="nsls2-collection"
+          # artifact_id="219242758"
+          # envname="2022-2.2-py39"
+          # archive_name="${envname}.zip"
+          # curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
+          # unzip -v ${archive_name}  # contents info
+          # unzip ${archive_name}
+          # mv -v Dockerfile Dockerfile-${envname}
+          # rm -fv ${archive_name}
 
       - name: Test upload to Zenodo Sandbox
         run: |
