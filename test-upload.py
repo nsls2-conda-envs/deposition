@@ -55,6 +55,12 @@ def create_new_version(
 
     newver_draft = ret_newver.json()["links"]["latest_draft"]
 
+    notes_urls = [
+        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/5",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/2235980315",
+    ]
+    notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>' for url in notes_urls])
+
     data = {
         "metadata": {
             "version": version,
@@ -71,10 +77,7 @@ def create_new_version(
                 "conda-forge",
                 "conda-pack",
             ],
-            "notes": (
-                "https://github.com/nsls2-conda-envs/nsls2-collection/pull/5<br>"
-                "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/2235980315"
-            ),
+            "notes": notes_urls_strs,
             "creators": [
                 {
                     "name": "Rakitin, Maksim",
