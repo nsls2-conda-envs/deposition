@@ -58,17 +58,21 @@ def create_new_version(
     data = {
         "metadata": {
             "version": version,
-            "title": f"NSLS-II collection conda environment {version} with Python 3.8 and 3.9",
+            "title": f"NSLS-II collection conda environment {version} with Python 3.7 and 3.9",
             "description": "NSLS-II collection environment deployed to the experimental floor.",
             "upload_type": "software",
-            "publication_date": "2022-04-21",  # datetime.datetime.now().strftime("%Y-%m-%d"),
+            "publication_date": "2022-04-15",  # datetime.datetime.now().strftime("%Y-%m-%d"),
             "prereserve_doi": True,
             "creators": [
                 {
                     "name": "Rakitin, Maksim",
                     "affiliation": "NSLS-II, Brookhaven National Laboratory",
                     "orcid": "0000-0003-3685-852X",
-                }
+                },
+                {
+                    "name": "Bischof, Garrett",
+                    "affiliation": "NSLS-II, Brookhaven National Laboratory",
+                },
             ],
         }
     }
@@ -127,50 +131,51 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 
 
 if __name__ == "__main__":
-    counter = count(1)
-    token = os.environ["ZENODO_TOKEN"]
+
     conceptrecid = "4057062"
+    version = "2022-2.1"
+    token = os.environ["ZENODO_TOKEN"]
 
-    # resp = create_new_version(
-    #     conceptrecid=conceptrecid,
-    #     version="2022-2.2",
-    #     token=token,
-    #     extra_files={
-    #         # Python 3.8
-    #         "2022-2.2-py38-tiled-md5sum.txt": "r",
-    #         "2022-2.2-py38-tiled-sha256sum.txt": "r",
-    #         "2022-2.2-py38-tiled.yml": "r",
-    #         "Dockerfile-2022-2.2-py38-tiled": "r",
-    #         "runner-2022-2.2-py38-tiled.sh": "r",
-    #         "2022-2.2-py38-tiled.tar.gz": "rb",
-    #         # Python 3.9
-    #         "2022-2.2-py39-tiled-md5sum.txt": "r",
-    #         "2022-2.2-py39-tiled-sha256sum.txt": "r",
-    #         "2022-2.2-py39-tiled.yml": "r",
-    #         "Dockerfile-2022-2.2-py39-tiled": "r",
-    #         "runner-2022-2.2-py39-tiled.sh": "r",
-    #         "2022-2.2-py39-tiled.tar.gz": "rb",
-    #     },
-    # )
-    # pprint.pprint(resp)
-
-    files = {
-        # Python 3.8
-        "2022-2.2-py38-md5sum.txt": "r",
-        "2022-2.2-py38-sha256sum.txt": "r",
-        "2022-2.2-py38.yml": "r",
-        "Dockerfile-2022-2.2-py38": "r",
-        "runner-2022-2.2-py38.sh": "r",
-        "2022-2.2-py38.tar.gz": "rb",
-        # Python 3.9
-        "2022-2.2-py39-md5sum.txt": "r",
-        "2022-2.2-py39-sha256sum.txt": "r",
-        "2022-2.2-py39.yml": "r",
-        "Dockerfile-2022-2.2-py39": "r",
-        "runner-2022-2.2-py39.sh": "r",
-        "2022-2.2-py39.tar.gz": "rb",
-    }
-
-    update_deposition_with_files(
-        conceptrecid=conceptrecid, files=files, token=token
+    resp = create_new_version(
+        conceptrecid=conceptrecid,
+        version=version,
+        token=token,
+        extra_files={
+            # Python 3.8
+            f"{version}-py37-tiled-md5sum.txt": "r",
+            f"{version}-py37-tiled-sha256sum.txt": "r",
+            f"{version}-py37-tiled.yml": "r",
+            f"Dockerfile-{version}-py37-tiled": "r",
+            f"runner-{version}-py37-tiled.sh": "r",
+            f"{version}-py37-tiled.tar.gz": "rb",
+            # Python 3.9
+            f"{version}-py39-tiled-md5sum.txt": "r",
+            f"{version}-py39-tiled-sha256sum.txt": "r",
+            f"{version}-py39-tiled.yml": "r",
+            f"Dockerfile-{version}-py39-tiled": "r",
+            f"runner-{version}-py39-tiled.sh": "r",
+            f"{version}-py39-tiled.tar.gz": "rb",
+        },
     )
+    pprint.pprint(resp)
+
+    # files = {
+    #     # Python 3.8
+    #     "2022-2.2-py38-md5sum.txt": "r",
+    #     "2022-2.2-py38-sha256sum.txt": "r",
+    #     "2022-2.2-py38.yml": "r",
+    #     "Dockerfile-2022-2.2-py38": "r",
+    #     "runner-2022-2.2-py38.sh": "r",
+    #     "2022-2.2-py38.tar.gz": "rb",
+    #     # Python 3.9
+    #     "2022-2.2-py39-md5sum.txt": "r",
+    #     "2022-2.2-py39-sha256sum.txt": "r",
+    #     "2022-2.2-py39.yml": "r",
+    #     "Dockerfile-2022-2.2-py39": "r",
+    #     "runner-2022-2.2-py39.sh": "r",
+    #     "2022-2.2-py39.tar.gz": "rb",
+    # }
+
+    # update_deposition_with_files(
+    #     conceptrecid=conceptrecid, files=files, token=token
+    # )
