@@ -56,8 +56,8 @@ def create_new_version(
     newver_draft = ret_newver.json()["links"]["latest_draft"]
 
     notes_urls = [
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/5",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/2235980315",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/4",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/2242809376",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>' for url in notes_urls])
 
@@ -154,38 +154,38 @@ if __name__ == "__main__":
 
     resp = create_new_version(
         conceptrecid=conceptrecid,
-        version=version,
+        version=f"{version}-tiled",
         token=token,
         extra_files={
             # Python 3.8 (non-tiled)
-            f"{version}-py38-md5sum.txt": "r",
-            f"{version}-py38-sha256sum.txt": "r",
-            f"{version}-py38.yml": "r",
-            f"Dockerfile-{version}-py38": "r",
-            f"runner-{version}-py38.sh": "r",
-            f"{version}-py38.tar.gz": "rb",
-            # Python 3.9 (non-tiled)
-            f"{version}-py39-md5sum.txt": "r",
-            f"{version}-py39-sha256sum.txt": "r",
-            f"{version}-py39.yml": "r",
-            f"Dockerfile-{version}-py39": "r",
-            f"runner-{version}-py39.sh": "r",
-            f"{version}-py39.tar.gz": "rb",
+            # f"{version}-py38-md5sum.txt": "r",
+            # f"{version}-py38-sha256sum.txt": "r",
+            # f"{version}-py38.yml": "r",
+            # f"Dockerfile-{version}-py38": "r",
+            # f"runner-{version}-py38.sh": "r",
+            # f"{version}-py38.tar.gz": "rb",
+            # # Python 3.9 (non-tiled)
+            # f"{version}-py39-md5sum.txt": "r",
+            # f"{version}-py39-sha256sum.txt": "r",
+            # f"{version}-py39.yml": "r",
+            # f"Dockerfile-{version}-py39": "r",
+            # f"runner-{version}-py39.sh": "r",
+            # f"{version}-py39.tar.gz": "rb",
 
             # Python 3.8 (tiled)
-            # f"{version}-py38-tiled-md5sum.txt": "r",
-            # f"{version}-py38-tiled-sha256sum.txt": "r",
-            # f"{version}-py38-tiled.yml": "r",
-            # f"Dockerfile-{version}-py38-tiled": "r",
-            # f"runner-{version}-py38-tiled.sh": "r",
-            # f"{version}-py38-tiled.tar.gz": "rb",
-            # # Python 3.9 (tiled)
-            # f"{version}-py39-tiled-md5sum.txt": "r",
-            # f"{version}-py39-tiled-sha256sum.txt": "r",
-            # f"{version}-py39-tiled.yml": "r",
-            # f"Dockerfile-{version}-py39-tiled": "r",
-            # f"runner-{version}-py39-tiled.sh": "r",
-            # f"{version}-py39-tiled.tar.gz": "rb",
+            f"{version}-py38-tiled-md5sum.txt": "r",
+            f"{version}-py38-tiled-sha256sum.txt": "r",
+            f"{version}-py38-tiled.yml": "r",
+            f"Dockerfile-{version}-py38-tiled": "r",
+            f"runner-{version}-py38-tiled.sh": "r",
+            f"{version}-py38-tiled.tar.gz": "rb",
+            # Python 3.9 (tiled)
+            f"{version}-py39-tiled-md5sum.txt": "r",
+            f"{version}-py39-tiled-sha256sum.txt": "r",
+            f"{version}-py39-tiled.yml": "r",
+            f"Dockerfile-{version}-py39-tiled": "r",
+            f"runner-{version}-py39-tiled.sh": "r",
+            f"{version}-py39-tiled.tar.gz": "rb",
         },
     )
     pprint.pprint(resp)
