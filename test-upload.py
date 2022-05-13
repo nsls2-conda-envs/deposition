@@ -149,7 +149,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2022-2.3"
+    version = "2022-2.4"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
@@ -158,19 +158,19 @@ if __name__ == "__main__":
         token=token,
         extra_files={
             # Python 3.8 (non-tiled)
-            # f"{version}-py38-md5sum.txt": "r",
-            # f"{version}-py38-sha256sum.txt": "r",
-            # f"{version}-py38.yml": "r",
-            # f"Dockerfile-{version}-py38": "r",
-            # f"runner-{version}-py38.sh": "r",
-            # f"{version}-py38.tar.gz": "rb",
-            # # Python 3.9 (non-tiled)
-            # f"{version}-py39-md5sum.txt": "r",
-            # f"{version}-py39-sha256sum.txt": "r",
-            # f"{version}-py39.yml": "r",
-            # f"Dockerfile-{version}-py39": "r",
-            # f"runner-{version}-py39.sh": "r",
-            # f"{version}-py39.tar.gz": "rb",
+            f"{version}-py38-md5sum.txt": "r",
+            f"{version}-py38-sha256sum.txt": "r",
+            f"{version}-py38.yml": "r",
+            f"Dockerfile-{version}-py38": "r",
+            f"runner-{version}-py38.sh": "r",
+            f"{version}-py38.tar.gz": "rb",
+            # Python 3.9 (non-tiled)
+            f"{version}-py39-md5sum.txt": "r",
+            f"{version}-py39-sha256sum.txt": "r",
+            f"{version}-py39.yml": "r",
+            f"Dockerfile-{version}-py39": "r",
+            f"runner-{version}-py39.sh": "r",
+            f"{version}-py39.tar.gz": "rb",
 
             # Python 3.8 (tiled)
             f"{version}-py38-tiled-md5sum.txt": "r",
