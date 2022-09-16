@@ -54,7 +54,8 @@ jobs:
           # rm -fv ${archive_name}
 
           repo_name="nsls2-collection-tiled"
-          artifact_id="2973606887"
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/8094199312/artifacts/349546633
+          artifact_id="349546633"
           envname="2022-3.1-py39-tiled"
           archive_name="${envname}.zip"
           curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
@@ -77,7 +78,8 @@ jobs:
           # rm -fv ${archive_name}
 
           repo_name="nsls2-collection"
-          artifact_id="2972952051"
+          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/8092408971/artifacts/349428351
+          artifact_id="349428351"
           envname="2022-3.1-py39"
           archive_name="${envname}.zip"
           curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
