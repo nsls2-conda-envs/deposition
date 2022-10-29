@@ -54,9 +54,9 @@ jobs:
           # rm -fv ${archive_name}
 
           repo_name="nsls2-collection-tiled"
-          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/8094199312/artifacts/349546633
-          artifact_id="349546633"
-          envname="2022-3.1-py39-tiled"
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/9019798042/artifacts/416013411
+          artifact_id="416013411"
+          envname="2022-3.2-py39-tiled"
           archive_name="${envname}.zip"
           curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
           unzip -v ${archive_name}  # contents info
@@ -78,9 +78,9 @@ jobs:
           # rm -fv ${archive_name}
 
           repo_name="nsls2-collection"
-          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/8092408971/artifacts/349428351
-          artifact_id="349428351"
-          envname="2022-3.1-py39"
+          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/9019803413/artifacts/416008284
+          artifact_id="416008284"
+          envname="2022-3.2-py39"
           archive_name="${envname}.zip"
           curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
           unzip -v ${archive_name}  # contents info

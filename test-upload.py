@@ -57,11 +57,11 @@ def create_new_version(
 
     notes_urls = [
         # non-tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/9",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/2972952051",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/11",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/3348094244",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/7",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/2973606887",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/8",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/3348092373",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>' for url in notes_urls])
 
@@ -153,7 +153,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2022-3.1"
+    version = "2022-3.2"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
