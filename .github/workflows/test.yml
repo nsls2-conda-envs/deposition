@@ -85,7 +85,7 @@ jobs:
           repo_name="nsls2-collection"
           # https://github.com/nsls2-conda-envs/nsls2-collection/suites/9994862001/artifacts/485175500
           artifact_id="485175500"
-          envname="2022-3.2-py39"
+          envname="2023-1.0-py310"
           archive_name="${envname}.zip"
           curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
           unzip -v ${archive_name}  # contents info

@@ -65,7 +65,9 @@ def create_new_version(
         "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/10",
         "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/3751025176",
     ]
-    notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>' for url in notes_urls])
+    notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
+                                     if url else ""
+                                     for url in notes_urls])
 
     data = {
         "metadata": {
