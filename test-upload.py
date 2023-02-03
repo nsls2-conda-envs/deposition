@@ -57,13 +57,13 @@ def create_new_version(
 
     notes_urls = [
         # non-tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/13",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/3751019640",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/16",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/4048514649",
         # need this empty line to enforce line break on Zenodo:
         "",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/10",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/3751025176",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/11",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/4057362512",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
                                      if url else ""
@@ -96,6 +96,11 @@ def create_new_version(
                     "name": "Bischof, Garrett",
                     "affiliation": "NSLS-II, Brookhaven National Laboratory",
                     "orcid": "0000-0001-9351-274X",
+                },
+                {
+                    "name": "Aishima, Jun",
+                    "affiliation": "NSLS-II, Brookhaven National Laboratory",
+                    "orcid": "0000-0003-4710-2461",
                 },
             ],
         }
@@ -157,7 +162,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2023-1.0"
+    version = "2023-1.1"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
