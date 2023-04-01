@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -euo pipefail
+
 # Usage:
 #   $ bash download-artifacts.sh nsls2-collection-tiled 627190580 2023-1.3-py310-tiled
 
