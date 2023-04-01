@@ -42,57 +42,24 @@ jobs:
           set -vxeuo pipefail
 
           #
-          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/4207810204
+          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/4581079592
           #
 
-          repo_name="nsls2-collection"
-          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/11056519298/artifacts/562062216
-          artifact_id="562062216"
-          envname="2023-1.2-py39"
-          archive_name="${envname}.zip"
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          unzip -v ${archive_name}  # contents info
-          unzip ${archive_name}
-          mv -v Dockerfile Dockerfile-${envname}
-          rm -fv ${archive_name}
+          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/11958527862/artifacts/627168782
+          bash ${GITHUB_WORKSPACE}/download_artifacts.sh nsls2-collection 627168782 2023-1.3-py39
 
-          repo_name="nsls2-collection"
-          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/11056519298/artifacts/562062214
-          artifact_id="562062214"
-          envname="2023-1.2-py310"
-          archive_name="${envname}.zip"
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          unzip -v ${archive_name}  # contents info
-          unzip ${archive_name}
-          mv -v Dockerfile Dockerfile-${envname}
-          rm -fv ${archive_name}
+          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/11958527862/artifacts/627168779
+          bash ${GITHUB_WORKSPACE}/download_artifacts.sh nsls2-collection 627168779 2023-1.3-py310
 
           #
-          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/4207810507
+          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/4581193637
           #
 
-          repo_name="nsls2-collection-tiled"
-          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/11056520056/artifacts/562059475
-          artifact_id="562059475"
-          envname="2023-1.2-py39-tiled"
-          archive_name="${envname}.zip"
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          unzip -v ${archive_name}  # contents info
-          unzip ${archive_name}
-          mv -v Dockerfile Dockerfile-${envname}
-          rm -fv ${archive_name}
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/11958755002/artifacts/627190582
+          bash ${GITHUB_WORKSPACE}/download_artifacts.sh nsls2-collection-tiled 627190582 2023-1.3-py39-tiled
 
-          repo_name="nsls2-collection-tiled"
-          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/11056520056/artifacts/562059473
-          artifact_id="562059473"
-          envname="2023-1.2-py310-tiled"
-          archive_name="${envname}.zip"
-          curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
-          unzip -v ${archive_name}  # contents info
-          unzip ${archive_name}
-          mv -v Dockerfile Dockerfile-${envname}
-          rm -fv ${archive_name}
-
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/11958755002/artifacts/627190580
+          bash ${GITHUB_WORKSPACE}/download_artifacts.sh nsls2-collection-tiled 627190580 2023-1.3-py310-tiled
 
       - name: Upload artifacts to Zenodo
         run: |
