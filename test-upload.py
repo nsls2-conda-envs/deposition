@@ -88,7 +88,7 @@ def create_new_version(
             "notes": notes_urls_strs,
             "creators": [
                 {
-                    "name": "Rakitin, Maksim",
+                    "name": "Rakitin, Max",
                     "affiliation": "NSLS-II, Brookhaven National Laboratory",
                     "orcid": "0000-0003-3685-852X",
                 },
