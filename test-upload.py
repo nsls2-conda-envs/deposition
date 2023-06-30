@@ -57,13 +57,13 @@ def create_new_version(
 
     notes_urls = [
         # non-tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/20",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/4822608839",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/22",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/5416168747",
         # need this empty line to enforce line break on Zenodo:
         "",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/14",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/4822609279",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/17",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/5416167608",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
                                      if url else ""
@@ -72,7 +72,7 @@ def create_new_version(
     data = {
         "metadata": {
             "version": version,
-            "title": f"NSLS-II collection conda environment {version} with Python 3.9 and Python 3.10",
+            "title": f"NSLS-II collection conda environment {version} with Python 3.10",
             "description": "NSLS-II collection environment deployed to the experimental floor.",
             "upload_type": "software",
             "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
@@ -162,7 +162,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2023-2.0"
+    version = "2023-2.1"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
