@@ -42,18 +42,18 @@ jobs:
           set -vxeuo pipefail
 
           #
-          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/4822608839
+          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/5416168747
           #
 
-          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/12531920158/artifacts/669183445
-          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection 669183445 2023-2.0-py310
+          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/13962286137/artifacts/778232809
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection 778232809 2023-2.1-py310
 
           #
-          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/4822609279
+          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/5416167608
           #
 
-          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/12531921342/artifacts/669165507
-          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 669165507 2023-2.0-py310-tiled
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/13962282224/artifacts/778231137
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 778231137 2023-2.1-py310-tiled
 
       - name: Upload artifacts to Zenodo
         run: |
