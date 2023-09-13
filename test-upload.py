@@ -69,11 +69,23 @@ def create_new_version(
                                      if url else ""
                                      for url in notes_urls])
 
+    unpack_instructions = """
+Unpacking instructions:<br>
+<br>
+<pre>
+mkdir -p ~/conda_envs/&lt;env-name&gt;
+cd ~/conda_envs/&lt;env-name&gt;
+wget &lt;url-to&gt;/&lt;env-name&gt;.tar.gz
+tar -xvf &lt;env-name&gt;.tar.gz
+conda activate $PWD
+conda-unpack
+</pre>
+"""
     data = {
         "metadata": {
             "version": version,
             "title": f"NSLS-II collection conda environment {version} with Python 3.10",
-            "description": "NSLS-II collection environment deployed to the experimental floor.",
+            "description": f"NSLS-II collection environment deployed to the experimental floor.<br><br>{unpack_instructions}",
             "upload_type": "software",
             "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
             "prereserve_doi": True,
