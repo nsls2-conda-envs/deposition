@@ -70,7 +70,7 @@ def create_new_version(
                                      for url in notes_urls])
 
     unpack_instructions = """
-Unpacking instructions:<br>
+Unpacking instructions:
 <br>
 <pre>
 mkdir -p ~/conda_envs/&lt;env-name&gt;
