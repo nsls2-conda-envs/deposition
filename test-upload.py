@@ -57,23 +57,35 @@ def create_new_version(
 
     notes_urls = [
         # non-tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/22",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/5416168747",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/23",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/6176876013",
         # need this empty line to enforce line break on Zenodo:
         "",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/17",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/5416167608",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/19",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/6176873945",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
                                      if url else ""
                                      for url in notes_urls])
 
+    unpack_instructions = """
+Unpacking instructions:
+<br>
+<pre>
+mkdir -p ~/conda_envs/&lt;env-name&gt;
+cd ~/conda_envs/&lt;env-name&gt;
+wget &lt;url-to&gt;/&lt;env-name&gt;.tar.gz
+tar -xvf &lt;env-name&gt;.tar.gz
+conda activate $PWD
+conda-unpack
+</pre>
+"""
     data = {
         "metadata": {
             "version": version,
             "title": f"NSLS-II collection conda environment {version} with Python 3.10",
-            "description": "NSLS-II collection environment deployed to the experimental floor.",
+            "description": f"NSLS-II collection environment deployed to the experimental floor.<br><br>{unpack_instructions}",
             "upload_type": "software",
             "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
             "prereserve_doi": True,
@@ -162,7 +174,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2023-2.1"
+    version = "2023-3.0"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
