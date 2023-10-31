@@ -24,11 +24,23 @@ def upload_files(bucket_url, files, token):
             "as keys and access mode as values"
         )
 
+    ret_declare = requests.post(
+        bucket_url,
+        headers={
+            "Content-Type": "application/json",
+            "Authorization": f"Bearer {token}",
+        },
+        data=json.dumps([{"key": os.path.basename(file)} for file in files]),
+    )
+    print_now(ret_declare.status_code, ret_declare.text)
+
     for file, mode in files.items():
         print_now(f"Uploading {file}...")
-        ret = requests.put(
-            f"{bucket_url}/{os.path.basename(file)}",
-            params={"access_token": token},
+
+        basename = os.path.basename(file)
+
+        ret_content = requests.put(
+            f"{bucket_url}/{basename}/content",
             headers={
                 "Accept": "application/json",
                 "Content-Type": "application/octet-stream",
@@ -36,34 +48,43 @@ def upload_files(bucket_url, files, token):
             },
             data=open(file, mode),
         )
-        print_now(ret.status_code, ret.text)
+        print_now(ret_content.status_code, ret_content.text)
+
+        ret_commit = requests.post(
+            f"{bucket_url}/{basename}/commit",
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {token}",
+            },
+        )
+        print_now(ret_commit.status_code, ret_commit.text)
 
 
 def create_new_version(
     conceptrecid=None, version=None, extra_files=None, token=None
 ):
     rec = requests.get(
-        f"{BASE_URL}/records/{conceptrecid}",
+        f"{BASE_URL}/records/{conceptrecid}/versions/latest",
         headers={"Authorization": f"Bearer {token}"},
     )
 
     ret_newver = requests.post(
-        f"{BASE_URL}/deposit/depositions/{rec.json()['id']}/actions/newversion",
+        f"{BASE_URL}/records/{rec.json()['id']}/versions",
         params={"access_token": token},
     )
     print_now(ret_newver.url, ret_newver.status_code, ret_newver.json())
 
-    newver_draft = ret_newver.json()["links"]["latest_draft"]
+    newver_draft = ret_newver.json()["links"]["self"]
 
     notes_urls = [
         # non-tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/24",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/6186885203",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/25",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/6696329405",
         # need this empty line to enforce line break on Zenodo:
         "",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/20",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/6186562672",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/24",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/6674274136",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
                                      if url else ""
@@ -85,9 +106,10 @@ conda-unpack
         "metadata": {
             "version": version,
             "title": f"NSLS-II collection conda environment {version} with Python 3.10",
-            "description": f"NSLS-II collection environment deployed to the experimental floor.<br><br>{unpack_instructions}",
-            "upload_type": "software",
+            "description": f"NSLS-II collection environment deployed to the experimental floor.<br><br>{notes_urls_strs}",
+            "resource_type": {"id": "software"},
             "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
+            "publisher": "NSLS-II, Brookhaven National Laboratory",
             "prereserve_doi": True,
             "keywords": [
                 "conda",
@@ -97,22 +119,65 @@ conda-unpack
                 "conda-forge",
                 "conda-pack",
             ],
-            "notes": notes_urls_strs,
+            "additional_descriptions": [
+                {
+                    "description": unpack_instructions,
+                    "type": {
+                        "id": "notes",
+                        "title": {
+                            "en": "Unpacking instructions"
+                        }
+                    },
+                },
+            ],
             "creators": [
                 {
-                    "name": "Rakitin, Max",
-                    "affiliation": "NSLS-II, Brookhaven National Laboratory",
-                    "orcid": "0000-0003-3685-852X",
+                    "person_or_org": {
+                        "name": "Rakitin, Max",
+                        "given_name": "Max",
+                        "family_name": "Rakitin",
+                        "type": "personal",
+                        "identifiers": [{
+                            "scheme": "orcid",
+                            "identifier": "0000-0003-3685-852X",
+                        }],
+                    },
+                    "affiliations": [{
+                        "id": "01q47ea17",
+                        "name": "NSLS-II, Brookhaven National Laboratory",
+                    }],
                 },
                 {
-                    "name": "Bischof, Garrett",
-                    "affiliation": "NSLS-II, Brookhaven National Laboratory",
-                    "orcid": "0000-0001-9351-274X",
+                    "person_or_org": {
+                        "name": "Bischof, Garrett",
+                        "given_name": "Bischof",
+                        "family_name": "Garrett",
+                        "type": "personal",
+                        "identifiers": [{
+                            "scheme": "orcid",
+                            "identifier": "0000-0001-9351-274X",
+                        }],
+                    },
+                    "affiliations": [{
+                        "id": "01q47ea17",
+                        "name": "NSLS-II, Brookhaven National Laboratory",
+                    }],
                 },
                 {
-                    "name": "Aishima, Jun",
-                    "affiliation": "NSLS-II, Brookhaven National Laboratory",
-                    "orcid": "0000-0003-4710-2461",
+                    "person_or_org": {
+                        "name": "Aishima, Jun",
+                        "given_name": "Jun",
+                        "family_name": "Aishima",
+                        "type": "personal",
+                        "identifiers": [{
+                            "scheme": "orcid",
+                            "identifier": "0000-0003-4710-2461",
+                        }],
+                    },
+                    "affiliations": [{
+                        "id": "01q47ea17",
+                        "name": "NSLS-II, Brookhaven National Laboratory",
+                    }],
                 },
             ],
         }
@@ -131,7 +196,7 @@ conda-unpack
         r = requests.delete(self_file, params={"access_token": token})
         print_now(r.status_code, r.text)
 
-    bucket_url = resp_update.json()["links"]["bucket"]
+    bucket_url = resp_update.json()["links"]["files"]
 
     all_files = {}
     if extra_files is not None:
@@ -174,7 +239,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2023-3.1"
+    version = "2023-3.2"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
@@ -182,6 +247,7 @@ if __name__ == "__main__":
         # version=f"{version}-tiled",
         version=f"{version}",
         token=token,
+        # extra_files={"README.md": "r", "LICENSE": "r"}  # used for testing purposes
         extra_files={
             # # Python 3.8 (non-tiled)
             # f"{version}-py38-md5sum.txt": "r",
