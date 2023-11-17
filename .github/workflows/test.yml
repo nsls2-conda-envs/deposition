@@ -43,8 +43,8 @@ jobs:
           # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/6893976610
           #
 
-          # # https://github.com/nsls2-conda-envs/nsls2-collection/suites/18255528211/artifacts/1055088073
-          # bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection 1055088073 2023-3.3-py310
+          # https://github.com/nsls2-conda-envs/nsls2-collection/suites/18255528211/artifacts/1055088073
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection 1055088073 2023-3.3-py310
 
           # https://github.com/nsls2-conda-envs/nsls2-collection/suites/18255528211/artifacts/1055088080
           bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection 1055088080 2023-3.3-py311
@@ -53,11 +53,11 @@ jobs:
           # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/6893985933
           #
 
-          # # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/18255550871/artifacts/1055091555
-          # bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 1055091555 2023-3.3-py310-tiled
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/18255550871/artifacts/1055091555
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 1055091555 2023-3.3-py310-tiled
 
           # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/suites/18255550871/artifacts/1055091561
-          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 1055091555 2023-3.3-py311-tiled
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 1055091561 2023-3.3-py311-tiled
 
       - name: Upload artifacts to Zenodo
         run: |

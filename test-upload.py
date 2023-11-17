@@ -265,13 +265,13 @@ if __name__ == "__main__":
             # f"runner-{version}-py39.sh": "r",
             # f"{version}-py39.tar.gz": "rb",
 
-            # # Python 3.10 (non-tiled)
-            # f"{version}-py310-md5sum.txt": "r",
-            # f"{version}-py310-sha256sum.txt": "r",
-            # f"{version}-py310.yml": "r",
-            # f"Dockerfile-{version}-py310": "r",
-            # f"runner-{version}-py310.sh": "r",
-            # f"{version}-py310.tar.gz": "rb",
+            # Python 3.10 (non-tiled)
+            f"{version}-py310-md5sum.txt": "r",
+            f"{version}-py310-sha256sum.txt": "r",
+            f"{version}-py310.yml": "r",
+            f"Dockerfile-{version}-py310": "r",
+            f"runner-{version}-py310.sh": "r",
+            f"{version}-py310.tar.gz": "rb",
 
             # Python 3.11 (non-tiled)
             f"{version}-py311-md5sum.txt": "r",
@@ -297,13 +297,13 @@ if __name__ == "__main__":
             # f"runner-{version}-py39-tiled.sh": "r",
             # f"{version}-py39-tiled.tar.gz": "rb",
 
-            # # Python 3.10 (tiled)
-            # f"{version}-py310-tiled-md5sum.txt": "r",
-            # f"{version}-py310-tiled-sha256sum.txt": "r",
-            # f"{version}-py310-tiled.yml": "r",
-            # f"Dockerfile-{version}-py310-tiled": "r",
-            # f"runner-{version}-py310-tiled.sh": "r",
-            # f"{version}-py310-tiled.tar.gz": "rb",
+            # Python 3.10 (tiled)
+            f"{version}-py310-tiled-md5sum.txt": "r",
+            f"{version}-py310-tiled-sha256sum.txt": "r",
+            f"{version}-py310-tiled.yml": "r",
+            f"Dockerfile-{version}-py310-tiled": "r",
+            f"runner-{version}-py310-tiled.sh": "r",
+            f"{version}-py310-tiled.tar.gz": "rb",
 
             # Python 3.11 (tiled)
             f"{version}-py311-tiled-md5sum.txt": "r",
