@@ -78,13 +78,13 @@ def create_new_version(
 
     notes_urls = [
         # non-tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/26",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/6893976610",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/28",
+        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/7603753363",
         # need this empty line to enforce line break on Zenodo:
         "",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/25",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/6893985933",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/28",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/7602968629",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
                                      if url else ""
@@ -239,7 +239,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2023-3.3"
+    version = "2024-1.0"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
