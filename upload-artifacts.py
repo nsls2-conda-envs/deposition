@@ -301,16 +301,16 @@ if __name__ == "__main__":
             f"{version}-py310-tiled-md5sum.txt": "r",
             f"{version}-py310-tiled-sha256sum.txt": "r",
             f"{version}-py310-tiled.yml": "r",
-            f"Dockerfile-{version}-py310-tiled": "r",
-            f"runner-{version}-py310-tiled.sh": "r",
+            # f"Dockerfile-{version}-py310-tiled": "r",
+            # f"runner-{version}-py310-tiled.sh": "r",
             f"{version}-py310-tiled.tar.gz": "rb",
 
             # Python 3.11 (tiled)
             f"{version}-py311-tiled-md5sum.txt": "r",
             f"{version}-py311-tiled-sha256sum.txt": "r",
             f"{version}-py311-tiled.yml": "r",
-            f"Dockerfile-{version}-py311-tiled": "r",
-            f"runner-{version}-py311-tiled.sh": "r",
+            # f"Dockerfile-{version}-py311-tiled": "r",
+            # f"runner-{version}-py311-tiled.sh": "r",
             f"{version}-py311-tiled.tar.gz": "rb",
         },
     )
