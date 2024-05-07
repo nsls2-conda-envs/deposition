@@ -77,14 +77,14 @@ def create_new_version(
     newver_draft = ret_newver.json()["links"]["self"]
 
     notes_urls = [
-        # non-tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection/pull/28",
-        "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/7603753363",
-        # need this empty line to enforce line break on Zenodo:
-        "",
+        # # non-tiled
+        # "https://github.com/nsls2-conda-envs/nsls2-collection/pull/28",
+        # "https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/7603753363",
+        # # need this empty line to enforce line break on Zenodo:
+        # "",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/28",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/7602968629",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/29",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/8973247394",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
                                      if url else ""
@@ -239,7 +239,7 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 if __name__ == "__main__":
 
     conceptrecid = "4057062"
-    version = "2024-1.0"
+    version = "2024-2.0"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
@@ -265,21 +265,21 @@ if __name__ == "__main__":
             # f"runner-{version}-py39.sh": "r",
             # f"{version}-py39.tar.gz": "rb",
 
-            # Python 3.10 (non-tiled)
-            f"{version}-py310-md5sum.txt": "r",
-            f"{version}-py310-sha256sum.txt": "r",
-            f"{version}-py310.yml": "r",
-            f"Dockerfile-{version}-py310": "r",
-            f"runner-{version}-py310.sh": "r",
-            f"{version}-py310.tar.gz": "rb",
+            # # Python 3.10 (non-tiled)
+            # f"{version}-py310-md5sum.txt": "r",
+            # f"{version}-py310-sha256sum.txt": "r",
+            # f"{version}-py310.yml": "r",
+            # f"Dockerfile-{version}-py310": "r",
+            # f"runner-{version}-py310.sh": "r",
+            # f"{version}-py310.tar.gz": "rb",
 
-            # Python 3.11 (non-tiled)
-            f"{version}-py311-md5sum.txt": "r",
-            f"{version}-py311-sha256sum.txt": "r",
-            f"{version}-py311.yml": "r",
-            f"Dockerfile-{version}-py311": "r",
-            f"runner-{version}-py311.sh": "r",
-            f"{version}-py311.tar.gz": "rb",
+            # # Python 3.11 (non-tiled)
+            # f"{version}-py311-md5sum.txt": "r",
+            # f"{version}-py311-sha256sum.txt": "r",
+            # f"{version}-py311.yml": "r",
+            # f"Dockerfile-{version}-py311": "r",
+            # f"runner-{version}-py311.sh": "r",
+            # f"{version}-py311.tar.gz": "rb",
 
             # # Python 3.8 (tiled)
             # f"{version}-py38-tiled-md5sum.txt": "r",
@@ -301,16 +301,16 @@ if __name__ == "__main__":
             f"{version}-py310-tiled-md5sum.txt": "r",
             f"{version}-py310-tiled-sha256sum.txt": "r",
             f"{version}-py310-tiled.yml": "r",
-            f"Dockerfile-{version}-py310-tiled": "r",
-            f"runner-{version}-py310-tiled.sh": "r",
+            # f"Dockerfile-{version}-py310-tiled": "r",
+            # f"runner-{version}-py310-tiled.sh": "r",
             f"{version}-py310-tiled.tar.gz": "rb",
 
             # Python 3.11 (tiled)
             f"{version}-py311-tiled-md5sum.txt": "r",
             f"{version}-py311-tiled-sha256sum.txt": "r",
             f"{version}-py311-tiled.yml": "r",
-            f"Dockerfile-{version}-py311-tiled": "r",
-            f"runner-{version}-py311-tiled.sh": "r",
+            # f"Dockerfile-{version}-py311-tiled": "r",
+            # f"runner-{version}-py311-tiled.sh": "r",
             f"{version}-py311-tiled.tar.gz": "rb",
         },
     )
