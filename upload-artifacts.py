@@ -83,8 +83,8 @@ def create_new_version(
         # # need this empty line to enforce line break on Zenodo:
         # "",
         # tiled
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/29",
-        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/8973247394",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/pull/37",
+        "https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/9615874852",
     ]
     notes_urls_strs = "<br>\n".join([f'<a href="{url}">{url}</a>'
                                      if url else ""
@@ -105,7 +105,7 @@ conda-unpack
     data = {
         "metadata": {
             "version": version,
-            "title": f"NSLS-II collection conda environment {version} with Python 3.10 and 3.11",
+            "title": f"NSLS-II collection conda environment {version} with Python 3.10, 3.11, and 3.12",
             "description": f"NSLS-II collection environment deployed to the experimental floor.<br><br>{notes_urls_strs}",
             "resource_type": {"id": "software"},
             "publication_date": datetime.datetime.now().strftime("%Y-%m-%d"),
@@ -238,8 +238,8 @@ def update_deposition_with_files(conceptrecid=None, files=None, token=None):
 
 if __name__ == "__main__":
 
-    conceptrecid = "4057062"
-    version = "2024-2.0"
+    conceptrecid = "4057062"  # never changes, it's for the initial version.
+    version = "2024-2.1"
     token = os.environ["ZENODO_TOKEN"]
 
     resp = create_new_version(
@@ -301,17 +301,19 @@ if __name__ == "__main__":
             f"{version}-py310-tiled-md5sum.txt": "r",
             f"{version}-py310-tiled-sha256sum.txt": "r",
             f"{version}-py310-tiled.yml": "r",
-            # f"Dockerfile-{version}-py310-tiled": "r",
-            # f"runner-{version}-py310-tiled.sh": "r",
             f"{version}-py310-tiled.tar.gz": "rb",
 
             # Python 3.11 (tiled)
             f"{version}-py311-tiled-md5sum.txt": "r",
             f"{version}-py311-tiled-sha256sum.txt": "r",
             f"{version}-py311-tiled.yml": "r",
-            # f"Dockerfile-{version}-py311-tiled": "r",
-            # f"runner-{version}-py311-tiled.sh": "r",
             f"{version}-py311-tiled.tar.gz": "rb",
+
+            # Python 3.12 (tiled)
+            f"{version}-py312-tiled-md5sum.txt": "r",
+            f"{version}-py312-tiled-sha256sum.txt": "r",
+            f"{version}-py312-tiled.yml": "r",
+            f"{version}-py312-tiled.tar.gz": "rb",
         },
     )
     pprint.pprint(resp)
