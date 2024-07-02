@@ -31,5 +31,6 @@ archive_name="${envname}.zip"
 curl -L -H "Authorization: token ${GHA_TOKEN}" "https://api.github.com/repos/nsls2-conda-envs/${repo_name}/actions/artifacts/${artifact_id}/zip" > ${archive_name}
 unzip -v ${archive_name}  # contents info
 unzip ${archive_name}
+for f in *.yml; do mv $f $f.txt; done
 # mv -v Dockerfile Dockerfile-${envname}
 rm -fv ${archive_name}
