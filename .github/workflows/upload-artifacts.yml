@@ -40,28 +40,18 @@ jobs:
         run: |
           set -vxeuo pipefail
 
-          # #
-          # # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/7603753363
-          # #
-
-          # # https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/7603753363/artifacts/1184244620
-          # bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection 1184244620 2024-1.0-py310
-
-          # # https://github.com/nsls2-conda-envs/nsls2-collection/actions/runs/7603753363/artifacts/1184244622
-          # bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection 1184244622 2024-1.0-py311
-
           #
-          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/11617248480
+          # Artifacts from https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/13084352362
           #
 
-          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/11617248480/artifacts/2129824845
-          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 2129824845 2024-3.0-py310-tiled
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/13084352362/artifacts/2520335773
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 2520335773 2025-1.0-py310-tiled
 
-          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/11617248480/artifacts/2129824832
-          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 2129824832 2024-3.0-py311-tiled
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/13084352362/artifacts/2520335748
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 2520335748 2025-1.0-py311-tiled
 
-          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/11617248480/artifacts/2129827138
-          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 2129827138 2024-3.0-py312-tiled
+          # https://github.com/nsls2-conda-envs/nsls2-collection-tiled/actions/runs/13084352362/artifacts/2520336150
+          bash ${GITHUB_WORKSPACE}/download-artifacts.sh nsls2-collection-tiled 2520336150 2025-1.0-py312-tiled
 
       - name: Upload artifacts to Zenodo
         run: |
